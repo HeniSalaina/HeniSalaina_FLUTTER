@@ -1,19 +1,46 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // Import your HomeScreen widget
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String text = 'Selamat datang di politeknik sampit';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigation Routing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue, // Customize theme (optional)
+      title: 'Simple Widget',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Simple Widget'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                text,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    text = 'Terima kasih atas kunjunganya!';
+                  });
+                },
+                child: Text('Submit'),
+              ),
+            ],
+          ),
+        ),
       ),
-      home: HomeScreen(), // Set HomeScreen as the initial route
     );
   }
 }
